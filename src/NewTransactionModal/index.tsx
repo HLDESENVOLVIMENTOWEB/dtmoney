@@ -1,8 +1,9 @@
-import { Container, TransatctionTypeContainer } from './styles';
+import { Container, TransatctionTypeContainer, RadioBox } from './styles';
 import iconmeImg from '../assets/income.svg';
 import outcomeImg from '../assets/outcome.svg';
 import closeImg from '../assets/close.svg';
 import Modal from "react-modal";
+import { useState } from 'react';
 
 interface NewTransactionModalPops {
     isOpen: boolean;
@@ -10,7 +11,9 @@ interface NewTransactionModalPops {
 }
 
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalPops){
+    const [type, setType] = useState('ganhos')
 
+  
 
     return(
         <Modal 
@@ -38,18 +41,23 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
             />
 
            <TransatctionTypeContainer>
-                <button 
+                <RadioBox 
                   type="button"
+                  onClick={() => {setType('ganhos');}}
+                  isActive={type === 'ganhos'}
                   >
-                    <img src={iconmeImg} alt="Entrada" />
+                    <img src={iconmeImg}  alt="Entrada" />
                     <span>Entrada</span>
-                </button>
-                <button 
+                </RadioBox>
+                <RadioBox 
                   type="button"
+                  onClick={() => setType('perdas')} 
+                  isActive={type === 'perdas'}
                   >
-                    <img src={outcomeImg} alt="Saida" />
+                    <img src={outcomeImg}  
+                    alt="Saida" />
                     <span>Saida</span>
-                </button>
+                </RadioBox>
             </TransatctionTypeContainer>
 
            <input
