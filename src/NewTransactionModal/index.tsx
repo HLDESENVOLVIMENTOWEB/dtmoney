@@ -1,4 +1,6 @@
-import { Container } from './styles';
+import { Container, TransatctionTypeContainer } from './styles';
+import iconmeImg from '../assets/income.svg';
+import outcomeImg from '../assets/outcome.svg';
 import closeImg from '../assets/close.svg';
 import Modal from "react-modal";
 
@@ -35,9 +37,26 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
              placeholder="Valor"
             />
 
+           <TransatctionTypeContainer>
+                <button 
+                  type="button"
+                  >
+                    <img src={iconmeImg} alt="Entrada" />
+                    <span>Entrada</span>
+                </button>
+                <button 
+                  type="button"
+                  >
+                    <img src={outcomeImg} alt="Saida" />
+                    <span>Saida</span>
+                </button>
+            </TransatctionTypeContainer>
+
            <input
              placeholder="Categoria"
             />
+
+        
 
             <button type="submit">
                 Cadastrar
